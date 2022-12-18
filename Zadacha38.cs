@@ -2,30 +2,30 @@
 Найдите разницу между максимальным и минимальным элементов массива.
 [3 7 22 2 78] -> 76 */
 
-int[] GetArray(int size, int minValue, int maxValue)
+double [] GetArray(int size)
 {
-    int[] res = new int[size];
+    double[] res = new double [size];
     for(int i = 0; i < size; i++)
     {
-        res[i] = new Random().Next(minValue, maxValue);
+        res[i] = new Random().NextDouble();
     }
     return res;
 }
 
-void PrintArray(int[] arr)
+void PrintArray(double [] arr)
 {
     for(int i = 0; i < arr.Length; i++)
         {
-            Console.Write($"{arr[i]} ");
+            Console.Write($"{Math.Round(arr[i], 2)} ");
         }
 }
-int[] array = GetArray(8, -10, 10);
+double[] array = GetArray(10);
 PrintArray(array);
 
-int DifMaxMin(int [] array)
+double DifMaxMin(double [] array)
 {
-    int max = array[0];
-    int min = array[0];
+    double max = array[0];
+    double min = array[0];
     int i = 1;
     while (i < array.Length)
     {
@@ -44,6 +44,6 @@ int DifMaxMin(int [] array)
             i++;
         }
     }
-    return max-min;
+    return Math.Round(max-min, 2);
 }
 Console.WriteLine($"Разница между максимальным и минимальным значением = {DifMaxMin(array)}");
